@@ -1,0 +1,28 @@
+2021-02-15 10:07:51,230 INFO Set uid to user 0 succeeded
+2021-02-15 10:07:51,246 INFO supervisord started with pid 9
+2021-02-15 10:07:52,255 INFO spawned: 'php' with pid 11
+2021-02-15 10:07:53,261 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-02-15 10:17:54,543 INFO Set uid to user 0 succeeded
+2021-02-15 10:17:54,547 INFO supervisord started with pid 15
+2021-02-15 10:17:55,553 INFO spawned: 'php' with pid 17
+2021-02-15 10:17:57,394 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-02-15 10:35:13,570 INFO Set uid to user 0 succeeded
+2021-02-15 10:35:13,574 INFO supervisord started with pid 16
+2021-02-15 10:35:14,578 INFO spawned: 'php' with pid 18
+2021-02-15 10:35:16,485 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-02-15 14:55:15,001 INFO Set uid to user 0 succeeded
+2021-02-15 14:55:15,005 INFO supervisord started with pid 15
+2021-02-15 14:55:16,010 INFO spawned: 'php' with pid 17
+2021-02-15 14:55:17,038 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-02-15 15:36:04,011 INFO Set uid to user 0 succeeded
+2021-02-15 15:36:04,015 INFO supervisord started with pid 15
+2021-02-15 15:36:05,020 INFO spawned: 'php' with pid 17
+2021-02-15 15:36:07,003 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-02-15 15:48:08,315 INFO Set uid to user 0 succeeded
+2021-02-15 15:48:08,318 INFO supervisord started with pid 15
+2021-02-15 15:48:09,321 INFO spawned: 'php' with pid 17
+2021-02-15 15:48:11,290 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-02-15 15:48:24,228 INFO Set uid to user 0 succeeded
+2021-02-15 15:48:24,231 INFO supervisord started with pid 15
+2021-02-15 15:48:25,233 INFO spawned: 'php' with pid 17
+2021-02-15 15:48:26,993 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
