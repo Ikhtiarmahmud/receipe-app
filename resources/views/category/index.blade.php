@@ -8,9 +8,9 @@
             <div class="card">
                 <div class="row">
                    <div class="col-md-12">
-                    <h4 class="page-title d-inline"><i class="fa fa-industry"></i>&nbsp;CUSTOMER LIST</h4>
+                    <h4 class="page-title d-inline"><i class="fa fa-industry"></i>&nbsp;category LIST</h4>
                     <p class="mt-4 add-btn" >
-                        <a href="{{route('customers.create')}}" class="btn btn-primary waves-effect mr-4"><i class="fa fa-plus"></i> ADD NEW</a>
+                        <a href="{{route('categories.create')}}" class="btn btn-primary waves-effect mr-4"><i class="fa fa-plus"></i> ADD NEW</a>
                     </p>
                    </div>
                 </div>
@@ -26,27 +26,27 @@
     			<div class="card-body">
                         <table class="table table-responsive-sm table-striped" id="datatable">
                             <thead>
-    						<tr class="text-center bg-primary text-white">
+    						<tr class="bg-primary text-white">
     							<th>SL</th>
-    							<th>NAME</th>
-    							<th>STATUS</th>
+    							<th>Title</th>
+    							<th>Status</th>
     							<th>ACTION</th>
     						</tr>
     					</thead>
-    					<tbody class="text-center">
+    					<tbody>
                             @php
                                 $sl = 0;
                             @endphp
-                            @foreach ($customers as $customer)
+                            @foreach ($categories as $category)
                                 <tr>
                                     <td>{{++$sl}}</td>
-                                    <td>{{$customer->name}}</td>
-                                    <td>{{$customer->email}}</td>
+                                    <td>{{$category->title}}</td>
+                                    <td>{{$category->status}}</td>
                                     <td>
-                                        <a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        {{ Form::open(['route' => ['customers.destroy', $customer->id], 'methode'=>'post', 'class' => 'd-inline'])}}
+                                        {{ Form::open(['route' => ['categories.destroy', $category->id], 'methode'=>'post', 'class' => 'd-inline'])}}
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure!')">

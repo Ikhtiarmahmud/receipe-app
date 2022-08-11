@@ -7,22 +7,22 @@ namespace App\Services;
 use App\Traits\CrudTrait;
 use App\Traits\FileTrait;
 use Illuminate\Support\Str;
-use App\Repositories\CustomerRepository;
+use App\Repositories\CategoryRepository;
 
-class CustomerService
+class CategoryService
 {
     use CrudTrait;
     use FileTrait;
 
-    protected $customerRepository;
+    protected $categoryRepository;
 
-    public function __construct(CustomerRepository $customerRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
-        $this->customerRepository = $customerRepository;
-        $this->setActionRepository($this->customerRepository);
+        $this->categoryRepository = $categoryRepository;
+        $this->setActionRepository($this->categoryRepository);
     }
 
-    public function saveCustomerInfo(array $data)
+    public function saveCategoryInfo(array $data)
     {
         if(!empty($data['image'])) {
             $filename = $this->saveImage($data);
@@ -32,7 +32,7 @@ class CustomerService
         $this->save($data);
     }
 
-    public function updateCustomerInfo(array $data, int $id)
+    public function updateCategoryInfo(array $data, int $id)
     {
         $book = $this->findOne($id);
 

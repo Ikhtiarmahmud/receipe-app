@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +22,5 @@ Route::group(['middleware' => 'auth'], function () {
         return view('welcome');
     });
 
-    Route::resource('/customers', CustomerController::class);
+    Route::resource('/categories', CategoryController::class);
 });

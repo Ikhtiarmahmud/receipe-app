@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('customers')}}">
+          <a class="nav-link" href="{{ url('categories')}}">
             <i class="fa fa-user"></i>
             <span>Customer</span>
           </a>
