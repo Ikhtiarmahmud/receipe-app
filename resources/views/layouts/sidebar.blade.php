@@ -32,13 +32,13 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url('categories')}}">
             <i class="fa fa-user"></i>
-            <span>Customer</span>
+            <span>Category</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">
+          <a class="nav-link " href="{{ url('receipes')}}">
             <i class="fa fa-list"></i>
-            <span>Committee</span>
+            <span>Receipe</span>
           </a>
         </li>
         <li class="nav-item">
