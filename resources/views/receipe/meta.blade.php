@@ -5,7 +5,7 @@
                 <div class="col-12 col-md-6">
                     <div class="form-group">
                         {{ Form::label('title', 'Title', ['class' => 'control-label required-field']) }}
-                        {{ Form::text('title', $page == 'edit' ? $receipe->title : '', ['class' => 'form-control', 'placeholder' => 'Write a title']) }}
+                        {{ Form::text('title', $page == 'edit' ? $receipe->title : 'test', ['class' => 'form-control', 'placeholder' => 'Write a title']) }}
                         @if($errors->has('title'))
                             <p class="error-msg">{{ $errors->first('title') }}</p>
                         @endif
@@ -14,7 +14,7 @@
                 <div class="col-12 col-md-6">
                     <div class="form-group">
                         {{ Form::label('time', 'Time', ['class' => 'control-label required-field']) }}
-                        {{ Form::text('time', $page == 'edit' ? $receipe->time : '', ['class' => 'form-control', 'placeholder' => 'Write a cooking time']) }}
+                        {{ Form::text('time', $page == 'edit' ? $receipe->time : '30', ['class' => 'form-control', 'placeholder' => 'Write a cooking time']) }}
                         @if($errors->has('time'))
                             <p class="error-msg">{{ $errors->first('time') }}</p>
                         @endif
@@ -23,7 +23,7 @@
                 <div class="col-12 col-md-12">
                     <div class="form-group">
                         {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
-                        {{ Form::textarea('description', $page == 'edit' ? $receipe->description : '', 
+                        {{ Form::textarea('description', $page == 'edit' ? $receipe->description : 'test', 
                             ['class' => 'form-control textarea',
                             'placeholder' => 'Write a description',
                             'rows' => 2]) 
@@ -55,7 +55,6 @@
                     </div>
                     @endif
                 </div>
-                
             </div>
         </div>
     </div>

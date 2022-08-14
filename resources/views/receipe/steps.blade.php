@@ -8,21 +8,27 @@
                         <div class="row">
                             <div class="col-md-5">
                                 {{ Form::label('title', 'Title', ['class' => 'control-label required-field']) }}
-                                {{ Form::text('step_title[]', '', ['class' => 'form-control', 'placeholder' => 'Write a title']) }}
+                                {{ Form::text('title', 'test', ['class' => 'form-control', 'placeholder' => 'Write a title']) }}
                             </div>
                             <div class="col-md-5">
                                 {{ Form::label('image', 'Upload Image', ['class' => 'control-label required-field']) }}
-                                {{ Form::file('step_image[]', 
+                                {{ Form::file('image', 
                                         ['class' => 'form-control']) 
                                 }}
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-5">
                                 {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
-                                {{ Form::textarea('step_description[]', '', 
+                                {{ Form::textarea('description', 'test', 
                                     ['class' => 'form-control',
                                     'placeholder' => 'Write a description',
                                     'rows' => 2]) 
                                 }}
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    {{ Form::label('status', 'Status', ['class' => 'control-label required-field']) }}
+                                    {{ Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], '', ['class' => 'form-control']) }}
+                                </div>
                             </div>
                             <div class="col-md-2 repeater-action-btn">
                                 <input data-repeater-delete type="button" value="Delete" class="btn btn-danger"/>

@@ -6,13 +6,19 @@
                 <div data-repeater-list="group-a">
                     <div class="group-inp mb-3" data-repeater-item>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 {{ Form::label('name', 'Name', ['class' => 'control-label required-field']) }}
-                                {{ Form::text('name[]', '', ['class' => 'form-control', 'placeholder' => 'Write a name']) }}
+                                {{ Form::text('name', 'test1', ['class' => 'form-control', 'placeholder' => 'Write a name']) }}
                             </div>
-                            <div class="col-md-5">
-                                {{ Form::label('amount[]', 'Amount', ['class' => 'control-label required-field']) }}
-                                {{ Form::text('amount', '', ['class' => 'form-control', 'placeholder' => 'Write amount']) }}
+                            <div class="col-md-3">
+                                {{ Form::label('quantity', 'Quantity', ['class' => 'control-label required-field']) }}
+                                {{ Form::text('quantity', '20', ['class' => 'form-control', 'placeholder' => 'Write quantity']) }}
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    {{ Form::label('status', 'Status', ['class' => 'control-label required-field']) }}
+                                    {{ Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], '', ['class' => 'form-control']) }}
+                                </div>
                             </div>
                             <div class="col-md-2 repeater-action-btn">
                                 <input data-repeater-delete type="button" value="Delete" class="btn btn-danger"/>

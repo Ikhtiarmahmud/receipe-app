@@ -19,5 +19,13 @@ class ReceipeIngridientService
         $this->setActionRepository($this->receipeIngridientRepository);
     }
 
-    
+    public function saveReceipeIngridients(array $data, int $receipeId)
+    {
+        foreach ($data as $ingridient) {
+            $ingridient['receipe_id'] = $receipeId;
+            $this->receipeIngridientRepository->save($ingridient);
+        }
+
+        return true;
+    }
 }

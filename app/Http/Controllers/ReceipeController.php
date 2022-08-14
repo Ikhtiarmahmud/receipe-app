@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReceipeRequest;
 use App\Models\Receipe;
-use App\Services\ReceipeService;
 use Illuminate\Http\Request;
+use App\Services\ReceipeService;
+use App\Services\ReceipeStepService;
+use App\Http\Requests\ReceipeRequest;
+use App\Services\ReceipeIngridientService;
 
 class ReceipeController extends Controller
 {
@@ -14,8 +16,9 @@ class ReceipeController extends Controller
      */
     private $receipeService;
 
-    public function __construct(ReceipeService $receipeService)
-    {
+    public function __construct(
+        ReceipeService $receipeService
+    ) {
         $this->receipeService = $receipeService;
     }
 
@@ -51,7 +54,6 @@ class ReceipeController extends Controller
      */
     public function store(ReceipeRequest $request)
     {
-        dd($request->all());
         $this->receipeService->saveReceipeInfo($request->all());
 
         return redirect()->route('receipes.index')->with('success', 'Receipe Created Successfully !');
