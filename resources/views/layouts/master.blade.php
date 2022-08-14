@@ -59,6 +59,7 @@
     <script src="<?=url('assets/js/shards-dashboards.1.1.0.min.js');?>"></script>
     <script src="<?=url('assets/js/app/app-blog-overview.1.1.0.js');?>"></script>
     <script src="<?=url('assets/js/jquery.dataTables.js');?>"></script>
+    <script async defer src="<?=url('assets/js/jquery.repeater.js');?>"></script>
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable();
@@ -66,7 +67,7 @@
     </script>
     <script>
       tinymce.init({
-        selector: 'textarea',
+        selector: '.textarea',
         plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
         toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
         toolbar_mode: 'floating',

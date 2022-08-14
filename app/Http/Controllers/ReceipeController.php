@@ -51,6 +51,7 @@ class ReceipeController extends Controller
      */
     public function store(ReceipeRequest $request)
     {
+        dd($request->all());
         $this->receipeService->saveReceipeInfo($request->all());
 
         return redirect()->route('receipes.index')->with('success', 'Receipe Created Successfully !');

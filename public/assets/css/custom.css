@@ -12,6 +12,20 @@ body {
     float: right;
 }
 
+.steps {
+    border: 1px solid darkgrey;
+    padding: 35px;
+    box-shadow: 5px 3px 10px 1px darkgrey;
+}
+
+h3, h4 {
+    font-family: system-ui;
+    text-transform: uppercase;
+}
+.repeater-action-btn {
+    margin-top: 33px;
+}
+
 @media (max-width: 518px) {
     .add-btn {
       float: left;
