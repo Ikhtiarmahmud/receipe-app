@@ -39,6 +39,24 @@ class ReceipeStepService
         return true;
     }
 
+    public function updateReceipeStep(array $data, int $receipeId)
+    {
+        $ids = collect($data)->pluck('id')->toArray();
+        $this->receipeStepRepository->deleteNonExistsSteps($ids, $receipeId);
+
+        foreach ($data as $step) {
+            if(!empty($step['image'])) {
+                $this->deleteFile($step['image']);
+                $step['image'] = $this->saveImage($step);
+            }
+            
+            $step['receipe_id'] = $receipeId;
+            $this->receipeStepRepository->updateStep($step);
+        }
+
+        return true;
+    }
+
     private function saveImage(array $data): string
     {
         $extension       = $data['image']->getClientOriginalExtension();

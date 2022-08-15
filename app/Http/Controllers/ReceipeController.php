@@ -16,10 +16,24 @@ class ReceipeController extends Controller
      */
     private $receipeService;
 
+    /**
+     * @var ReceipeIngridientService
+     */
+    private $receipeIngridientService;
+
+    /**
+     * @var ReceipeStepService
+     */
+    private $receipeStepService;
+
     public function __construct(
-        ReceipeService $receipeService
+        ReceipeService $receipeService,
+        ReceipeIngridientService $receipeIngridientService,
+        ReceipeStepService $receipeStepService
     ) {
         $this->receipeService = $receipeService;
+        $this->receipeIngridientService = $receipeIngridientService;
+        $this->receipeStepService = $receipeStepService;
     }
 
     /**
@@ -79,9 +93,11 @@ class ReceipeController extends Controller
     public function edit($id)
     {
         $receipe = $this->receipeService->findOne($id);
+        $ingredients = $this->receipeIngridientService->findBy(['receipe_id' => $id]);
+        $steps = $this->receipeStepService->findBy(['receipe_id' => $id]);
         $page = "edit";
 
-        return view('receipe.form', compact('receipe', 'page'));
+        return view('receipe.form', compact('receipe', 'ingredients', 'steps', 'page'));
     }
 
     /**
@@ -95,7 +111,7 @@ class ReceipeController extends Controller
     {
         $this->receipeService->updateReceipeInfo($request->all(), $id);
 
-        return redirect()->route('receipe.index')->with('success', 'Receipe Updated Successfully !');
+        return redirect()->route('receipes.index')->with('success', 'Receipe Updated Successfully !');
     }
 
     /**

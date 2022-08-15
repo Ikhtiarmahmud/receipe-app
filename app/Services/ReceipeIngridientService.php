@@ -28,4 +28,17 @@ class ReceipeIngridientService
 
         return true;
     }
+
+    public function updateReceipeIngridients(array $data, int $receipeId)
+    {
+        $ids = collect($data)->pluck('id')->toArray();
+        $this->receipeIngridientRepository->deleteNonExistsIngridients($ids, $receipeId);
+        
+        foreach ($data as $ingridient) {
+            $ingridient['receipe_id'] = $receipeId;
+            $this->receipeIngridientRepository->updateIngredient($ingridient);
+        }
+
+        return true;
+    }
 }

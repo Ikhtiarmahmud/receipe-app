@@ -59,14 +59,19 @@ class ReceipeService
 
     public function updateReceipeInfo(array $data, int $id)
     {
-        $book = $this->findOne($id);
+        DB::transaction(function () use ($data, $id) {
+            $book = $this->findOne($id);
 
-        if (!empty($data['image'])) {
-            $this->deleteFile($book['image']);
-            $data['image'] = $this->saveImage($data);
-        }
+            if (!empty($data['image'])) {
+                $filename = $this->saveImage($data);
+                $data['image'] = $filename;
+            }
 
-        $book->update($data);
+            $book->update($data);
+
+            $this->receipeIngridientService->updateReceipeIngridients($data['group-a'], $id);
+            $this->receipeStepService->updateReceipeStep($data['group-b'], $id);
+        });
     }
 
     private function saveImage($data): string
