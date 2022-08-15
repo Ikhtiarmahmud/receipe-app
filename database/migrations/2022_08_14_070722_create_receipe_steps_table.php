@@ -15,7 +15,7 @@ class CreateReceipeStepsTable extends Migration
     {
         Schema::create('receipe_steps', function (Blueprint $table) {
             $table->id();
-            $table->integer('receipe_id');
+            $table->foreignId('receipe_id')->references('id')->on('receipes')->onDelete('cascade');
             $table->string('title');
             $table->string('image');
             $table->text('description');

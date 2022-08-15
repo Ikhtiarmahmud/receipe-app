@@ -15,6 +15,7 @@ class CreateReceipesTable extends Migration
     {
         Schema::create('receipes', function (Blueprint $table) {
             $table->id();
+            $table->string('category_id')->nullable();
             $table->string('title')->nullable();
             $table->string('image')->nullable();
             $table->string('time')->nullable();

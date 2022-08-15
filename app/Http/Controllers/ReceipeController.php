@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Receipe;
 use Illuminate\Http\Request;
 use App\Services\ReceipeService;
+use App\Services\CategoryService;
 use App\Services\ReceipeStepService;
 use App\Http\Requests\ReceipeRequest;
 use App\Services\ReceipeIngridientService;
@@ -26,14 +27,21 @@ class ReceipeController extends Controller
      */
     private $receipeStepService;
 
+    /**
+     * @var CategoryService
+     */
+    private $categoryService;
+
     public function __construct(
         ReceipeService $receipeService,
         ReceipeIngridientService $receipeIngridientService,
-        ReceipeStepService $receipeStepService
+        ReceipeStepService $receipeStepService,
+        CategoryService $categoryService
     ) {
         $this->receipeService = $receipeService;
         $this->receipeIngridientService = $receipeIngridientService;
         $this->receipeStepService = $receipeStepService;
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -56,8 +64,9 @@ class ReceipeController extends Controller
     public function create()
     {
         $page = "create";
+        $categories = $this->categoryService->findSelected(['id', 'title'])->pluck('title', 'id');
 
-        return view('receipe.form', compact('page'));
+        return view('receipe.form', compact('page', 'categories'));
     }
 
     /**
@@ -95,9 +104,10 @@ class ReceipeController extends Controller
         $receipe = $this->receipeService->findOne($id);
         $ingredients = $this->receipeIngridientService->findBy(['receipe_id' => $id]);
         $steps = $this->receipeStepService->findBy(['receipe_id' => $id]);
+        $categories = $this->categoryService->findSelected(['id', 'title'])->pluck('title', 'id');
         $page = "edit";
 
-        return view('receipe.form', compact('receipe', 'ingredients', 'steps', 'page'));
+        return view('receipe.form', compact('receipe', 'ingredients', 'steps', 'page', 'categories'));
     }
 
     /**

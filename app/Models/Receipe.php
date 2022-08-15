@@ -10,6 +10,6 @@ class Receipe extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'image', 'time', 'description', 'status',
+        'category_id', 'title', 'image', 'time', 'description', 'status',
     ];
 }

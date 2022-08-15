@@ -15,7 +15,7 @@ class CreateReceipeIngredientsTable extends Migration
     {
         Schema::create('receipe_ingredients', function (Blueprint $table) {
             $table->id();
-            $table->integer('receipe_id');
+            $table->foreignId('receipe_id')->references('id')->on('receipes')->onDelete('cascade');
             $table->string('name');
             $table->string('quantity');
             $table->string('status');

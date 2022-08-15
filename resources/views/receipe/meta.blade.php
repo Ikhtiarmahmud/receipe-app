@@ -11,12 +11,21 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-3">
                     <div class="form-group">
                         {{ Form::label('time', 'Time', ['class' => 'control-label required-field']) }}
                         {{ Form::text('time', $page == 'edit' ? $receipe->time : '', ['class' => 'form-control', 'placeholder' => 'Write a cooking time']) }}
                         @if($errors->has('time'))
                             <p class="error-msg">{{ $errors->first('time') }}</p>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="form-group">
+                        {{ Form::label('category', 'Category', ['class' => 'control-label required-field']) }}
+                        {{ Form::select('category_id', $categories, $page == 'edit' ? $receipe->category_id : '', ['class' => 'form-control', 'placeholder' => 'Select a category']) }}
+                        @if($errors->has('category_id'))
+                            <p class="error-msg">{{ $errors->first('category_id') }}</p>
                         @endif
                     </div>
                 </div>
