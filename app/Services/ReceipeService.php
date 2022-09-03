@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Traits\CrudTrait;
 use App\Traits\FileTrait;
+use App\Facades\FileUpload;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Services\ReceipeStepService;
@@ -45,7 +46,7 @@ class ReceipeService
         DB::transaction(function () use ($data) {
 
             if (!empty($data['image'])) {
-                $filename = $this->saveImage($data);
+                $filename = FileUpload::saveImage($data);
                 $data['image'] = $filename;
             }
 
@@ -63,7 +64,7 @@ class ReceipeService
             $book = $this->findOne($id);
 
             if (!empty($data['image'])) {
-                $filename = $this->saveImage($data);
+                $filename = FileUpload::saveImage($data);
                 $data['image'] = $filename;
             }
 
@@ -72,14 +73,5 @@ class ReceipeService
             $this->receipeIngridientService->updateReceipeIngridients($data['group-a'], $id);
             $this->receipeStepService->updateReceipeStep($data['group-b'], $id);
         });
-    }
-
-    private function saveImage($data): string
-    {
-        $extension       = $data['image']->getClientOriginalExtension();
-        $file_name       = 'images'.'-'.Str::random(30).'.'.$extension;
-        $this->upload($data['image'], 'images', $file_name);
-
-        return $file_name;
     }
 }

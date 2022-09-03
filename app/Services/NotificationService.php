@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Facades\FileUpload;
 use App\Traits\CrudTrait;
 use App\Traits\FileTrait;
 use Illuminate\Support\Str;
@@ -25,7 +26,7 @@ class NotificationService
     public function saveNotificationInfo(array $data)
     {
         if(!empty($data['image'])) {
-            $filename = $this->saveImage($data);
+            $filename = FileUpload::saveImage($data);
             $data['image'] = $filename;
         }
 
@@ -38,18 +39,9 @@ class NotificationService
 
         if (!empty($data['image'])) {
             $this->deleteFile($notification['image']);
-            $data['image'] = $this->saveImage($data);
+            $data['image'] = FileUpload::saveImage($data);
         }
 
         $notification->update($data);
-    }
-
-    private function saveImage($data): string
-    {
-        $extension       = $data['image']->getClientOriginalExtension();
-        $file_name       = 'images'.'-'.Str::random(30).'.'.$extension;
-        $this->upload($data['image'], 'images', $file_name);
-
-        return $file_name;
     }
 }

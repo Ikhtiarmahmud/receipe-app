@@ -2,9 +2,10 @@
 namespace App\Services;
 
 use App\Traits\CrudTrait;
+use App\Traits\FileTrait;
+use App\Facades\FileUpload;
 use Illuminate\Support\Str;
 use App\Repositories\ReceipeStepRepository;
-use App\Traits\FileTrait;
 
 class ReceipeStepService
 {
@@ -28,7 +29,7 @@ class ReceipeStepService
         foreach ($data as $step) {
             
             if(!empty($step['image'])) {
-                $filename = $this->saveImage($step);
+                $filename = FileUpload::saveImage($data);
                 $step['image'] = $filename;
             }
             
@@ -47,7 +48,7 @@ class ReceipeStepService
         foreach ($data as $step) {
             if(!empty($step['image'])) {
                 $this->deleteFile($step['image']);
-                $step['image'] = $this->saveImage($step);
+                $step['image'] = FileUpload::saveImage($data);
             }
             
             $step['receipe_id'] = $receipeId;
@@ -55,14 +56,5 @@ class ReceipeStepService
         }
 
         return true;
-    }
-
-    private function saveImage(array $data): string
-    {
-        $extension       = $data['image']->getClientOriginalExtension();
-        $file_name       = 'images'.'-'.Str::random(30).'.'.$extension;
-        $this->upload($data['image'], 'images', $file_name);
-
-        return $file_name;
     }
 }
