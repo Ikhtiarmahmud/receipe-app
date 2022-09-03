@@ -33,7 +33,7 @@
                     <div class="form-group">
                         {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
                         {{ Form::textarea('description', $page == 'edit' ? $receipe->description : '', 
-                            ['class' => 'form-control textarea',
+                            ['class' => 'form-control',
                             'placeholder' => 'Write a description',
                             'rows' => 2]) 
                         }}

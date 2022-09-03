@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="row">
                        <div class="col-md-12">
-                        <h4 class="page-title d-inline"><i class="fa fa-industry"></i>&nbsp;ADD NEW ARTICLE</h4>
+                        <h4 class="page-title d-inline"><i class="fa fa-industry"></i>&nbsp;ADD NEW NOTIFICATION</h4>
 
                        </div>
                     </div>
@@ -19,16 +19,16 @@
                 <div class="card">
                     <div class="card-body">
                        @if($page == "create")
-                            {{ Form::open(['route' => 'articles.store', 'methode'=>'post', 'enctype'=>'multipart/form-data']) }}
+                            {{ Form::open(['route' => 'notifications.store', 'methode'=>'post', 'enctype'=>'multipart/form-data']) }}
                         @else
-                            {{ Form::open(['route' => ['articles.update', $article->id], 'methode'=>'post', 'enctype'=>'multipart/form-data']) }}
+                            {{ Form::open(['route' => ['notifications.update', $notification->id], 'methode'=>'post', 'enctype'=>'multipart/form-data']) }}
                             @method('PUT')
                         @endif
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     {{ Form::label('title', 'Title', ['class' => 'control-label required-field']) }}
-                                    {{ Form::text('title', $page == 'edit' ? $article->title : '', ['class' => 'form-control', 'placeholder' => 'Write a title']) }}
+                                    {{ Form::text('title', $page == 'edit' ? $notification->title : '', ['class' => 'form-control', 'placeholder' => 'Write a title']) }}
                                     @if($errors->has('title'))
                                         <p class="error-msg">{{ $errors->first('title') }}</p>
                                     @endif
@@ -36,20 +36,23 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::label('status', 'Status', ['class' => 'control-label required-field']) }}
-                                    {{ Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], $page == 'edit' ? $article->status : '', ['class' => 'form-control']) }}
+                                    {{ Form::label('sub_title', 'Sub Title', ['class' => 'control-label required-field']) }}
+                                    {{ Form::text('sub_title', $page == 'edit' ? $notification->title : '', ['class' => 'form-control', 'placeholder' => 'Write a sub title']) }}
+                                    @if($errors->has('sub_title'))
+                                        <p class="error-msg">{{ $errors->first('sub_title') }}</p>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
-                                    {{ Form::textarea('description', $page == 'edit' ? $article->description : '',
-                                    ['class' => 'form-control',
-                                    'rows' => 4,
-                                    'placeholder' => 'Write a description']) }}
-                                    @if($errors->has('description'))
-                                        <p class="error-msg">{{ $errors->first('description') }}</p>
-                                    @endif
+                                    {{ Form::label('type', 'Type', ['class' => 'control-label required-field']) }}
+                                    {{ Form::select('type', ['receipe' => 'Receipe', 'Article' => 'Article'], $page == 'edit' ? $notification->type : '', ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    {{ Form::label('content', 'Content', ['class' => 'control-label required-field']) }}
+                                    {{ Form::select('column_id', ['1' => "Demo"], $page == 'edit' ? $notification->column_id : '', ['class' => 'form-control']) }}
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -62,13 +65,12 @@
                                         <p class="error-msg">{{ $errors->first('image') }}</p>
                                     @endif
                                 </div>
-                                @if($page == "edit")
-                                <div class="col-md-3">
-                                    <img src="{{ asset('storage/images/' . $article->image) }}" alt="" height="200" width="200">
-                                </div>
-                                @endif
                             </div>
-
+                            @if($page == "edit")
+                                <div class="col-md-3">
+                                    <img src="{{ asset('storage/images/' . $notification->image) }}" alt="" height="200" width="200">
+                                </div>
+                            @endif
                         </div>
                         {{  Form::submit('Submit', ['class' => 'btn btn-primary']) }}
                         {{ Form::close()}}

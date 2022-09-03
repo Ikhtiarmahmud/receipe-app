@@ -59,7 +59,7 @@
     <script src="<?=url('assets/js/shards-dashboards.1.1.0.min.js');?>"></script>
     <script src="<?=url('assets/js/app/app-blog-overview.1.1.0.js');?>"></script>
     <script src="<?=url('assets/js/jquery.dataTables.js');?>"></script>
-    <script async defer src="<?=url('assets/js/jquery.repeater.js');?>"></script>
+    <script src="<?=url('assets/js/jquery.repeater.js');?>"></script>
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable();

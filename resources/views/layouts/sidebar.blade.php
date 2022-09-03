@@ -42,29 +42,23 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">
-            <i class="fa fa-users"></i>
-            <span>Member List</span>
-          </a>
+            <a class="nav-link " href="{{ url('articles') }}">
+                <i class="fa fa-book"></i>
+                <span>Articles</span>
+            </a>
         </li>
-      <li class="nav-item">
-          <a class="nav-link " href="#">
-              <i class="fa fa-book"></i>
-              <span>Book List</span>
+        <li class="nav-item">
+          <a class="nav-link " href="{{ url('notifications') }}">
+              <i class="fa fa-send"></i>
+              <span>Notification</span>
           </a>
       </li>
-          <li class="nav-item">
-              <a class="nav-link " href="#">
-                  <i class="fa fa-campground"></i>
-                  <span>About Us</span>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link " href="{{ url('articles') }}">
-                  <i class="fa fa-book"></i>
-                  <span>Articles</span>
-              </a>
-          </li>
+        <li class="nav-item">
+            <a class="nav-link " href="#">
+                <i class="fa fa-campground"></i>
+                <span>Settings</span>
+            </a>
+        </li>
       </ul>
     </div>
   </aside>
