@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Services\ArticleService;
 use App\Http\Requests\ArticleRequest;
@@ -68,11 +69,11 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ArticleRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-    */
-    public function update(ArticleRequest $request, $id)
+     * @return RedirectResponse
+     */
+    public function update(ArticleRequest $request, $id): RedirectResponse
     {
         $this->articleService->updateArticleInfo($request->all(), $id);
 
