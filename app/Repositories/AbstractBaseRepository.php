@@ -267,7 +267,9 @@ abstract class AbstractBaseRepository implements RepositoryInteface
     {
         $model = $this->model;
         if ($relation) {
-            $model = $model->with($relation);
+            foreach ($relation as $key => $value) {
+                $model = $model->with($value);
+            }
         }
         if ($orderBy) {
             $model = $model->orderBy($orderBy['column'], $orderBy['direction']);

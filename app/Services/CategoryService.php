@@ -44,4 +44,9 @@ class CategoryService
 
         $book->update($data);
     }
+
+    public function findTrendingCategories()
+    {
+        return $this->categoryRepository->findTrendingCategories();
+    }
 }

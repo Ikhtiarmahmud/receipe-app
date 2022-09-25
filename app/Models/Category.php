@@ -10,4 +10,9 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'image', 'status'];
+
+    public function receipes()
+    {
+        return $this->hasMany(Receipe::class);
+    }
 }

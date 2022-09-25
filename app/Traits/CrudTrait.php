@@ -77,7 +77,7 @@ trait CrudTrait
      * @param array|null $orderBy
      * @return Collection
      */
-    public function findBy(array $searchCriteria = [], $relation = null, array $orderBy = null)
+    public function findBy(array $searchCriteria = [], $relation = [], array $orderBy = null)
     {
         return $this->actionRepository->findBy($searchCriteria, $relation, $orderBy);
     }
