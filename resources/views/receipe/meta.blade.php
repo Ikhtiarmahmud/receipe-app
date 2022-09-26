@@ -22,6 +22,28 @@
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="form-group">
+                        {{ Form::label('people', 'People', ['class' => 'control-label required-field']) }}
+                        {{ Form::text('people', $page == 'edit' ? $receipe->people : '', ['class' => 'form-control', 'placeholder' => 'Write total people']) }}
+                        @if($errors->has('people'))
+                            <p class="error-msg">{{ $errors->first('people') }}</p>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="form-group">
+                        {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
+                        {{ Form::textarea('description', $page == 'edit' ? $receipe->description : '',
+                            ['class' => 'form-control',
+                            'placeholder' => 'Write a description',
+                            'rows' => 2])
+                        }}
+                        @if($errors->has('time'))
+                            <p class="error-msg">{{ $errors->first('time') }}</p>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="form-group">
                         {{ Form::label('category', 'Category', ['class' => 'control-label required-field']) }}
                         {{ Form::select('category_id', $categories, $page == 'edit' ? $receipe->category_id : '', ['class' => 'form-control', 'placeholder' => 'Select a category']) }}
                         @if($errors->has('category_id'))
@@ -29,30 +51,17 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-12 col-md-12">
-                    <div class="form-group">
-                        {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
-                        {{ Form::textarea('description', $page == 'edit' ? $receipe->description : '', 
-                            ['class' => 'form-control',
-                            'placeholder' => 'Write a description',
-                            'rows' => 2]) 
-                        }}
-                        @if($errors->has('time'))
-                            <p class="error-msg">{{ $errors->first('time') }}</p>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-3">
                     <div class="form-group">
                         {{ Form::label('status', 'Status', ['class' => 'control-label required-field']) }}
                         {{ Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], $page == 'edit' ? $receipe->status : '', ['class' => 'form-control']) }}
                     </div>
-                </div>  
+                </div>
                 <div class="col-12 col-md-4">
                     <div class="form-group">
                         {{ Form::label('image', 'Upload Image', ['class' => 'control-label required-field']) }}
-                        {{ Form::file('image', 
-                                ['class' => 'form-control']) 
+                        {{ Form::file('image',
+                                ['class' => 'form-control'])
                         }}
                         @if($errors->has('image'))
                             <p class="error-msg">{{ $errors->first('image') }}</p>

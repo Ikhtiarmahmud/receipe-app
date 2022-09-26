@@ -30,6 +30,7 @@
     							<th>SL</th>
     							<th>Title</th>
     							<th>Time</th>
+    							<th>People</th>
     							<th>Description</th>
     							<th>Status</th>
     							<th>ACTION</th>
@@ -44,6 +45,7 @@
                                     <td>{{++$sl}}</td>
                                     <td>{{$receipe->title}}</td>
                                     <td>{{$receipe->time}}</td>
+                                    <td>{{$receipe->people}}</td>
                                     <td>{{$receipe->description}}</td>
                                     <td>{{$receipe->status}}</td>
                                     <td>
