@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ArticleController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ReceipeController;
 use Illuminate\Http\Request;
@@ -24,3 +25,5 @@ Route::get('/trending-categories', [CategoryController::class, 'getTrendingCateg
 Route::get('/recipes-by-category/{categoryId}', [ReceipeController::class, 'getRecipesByCategory']);
 Route::get('/recipes', [ReceipeController::class, 'getRandomRecipes']);
 Route::get('/recipe/{id}', [ReceipeController::class, 'getRecipe']);
+Route::get('/articles', [ArticleController::class, 'getArticles']);
+Route::get('/article/{id}', [ArticleController::class, 'getSingleArticle']);
