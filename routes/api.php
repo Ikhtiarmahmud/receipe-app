@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/trending-categories', [CategoryController::class, 'getTrendingCategories']);
 Route::get('/recipes-by-category/{categoryId}', [ReceipeController::class, 'getRecipesByCategory']);
+Route::get('/recipes', [ReceipeController::class, 'getRandomRecipes']);
+Route::get('/recipe/{id}', [ReceipeController::class, 'getRecipe']);

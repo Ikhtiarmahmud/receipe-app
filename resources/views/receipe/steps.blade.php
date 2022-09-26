@@ -14,8 +14,8 @@
                             </div>
                             <div class="col-md-5">
                                 {{ Form::label('image', 'Upload Image', ['class' => 'control-label required-field']) }}
-                                {{ Form::file('image', 
-                                        ['class' => 'form-control']) 
+                                {{ Form::file('image',
+                                        ['class' => 'form-control'])
                                 }}
                             </div>
                             <div class="col-md-2">
@@ -23,10 +23,10 @@
                             </div>
                             <div class="col-md-5">
                                 {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
-                                {{ Form::textarea('description', $item->description, 
+                                {{ Form::textarea('description', $item->description,
                                     ['class' => 'form-control',
                                     'placeholder' => 'Write a description',
-                                    'rows' => 2]) 
+                                    'rows' => 2])
                                 }}
                             </div>
                             <div class="col-md-5">
@@ -51,16 +51,16 @@
                             </div>
                             <div class="col-md-5">
                                 {{ Form::label('image', 'Upload Image', ['class' => 'control-label required-field']) }}
-                                {{ Form::file('image', 
-                                        ['class' => 'form-control']) 
+                                {{ Form::file('image',
+                                        ['class' => 'form-control'])
                                 }}
                             </div>
                             <div class="col-md-5">
                                 {{ Form::label('description', 'Description', ['class' => 'control-label required-field']) }}
-                                {{ Form::textarea('description', '', 
+                                {{ Form::textarea('description', '',
                                     ['class' => 'form-control',
                                     'placeholder' => 'Write a description',
-                                    'rows' => 2]) 
+                                    'rows' => 2])
                                 }}
                             </div>
                             <div class="col-md-5">

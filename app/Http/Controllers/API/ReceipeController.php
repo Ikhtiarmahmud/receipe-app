@@ -37,4 +37,25 @@ class ReceipeController extends Controller
 
         return $this->apiBaseService->sendSuccessResponse($recipes, 'Recipes retrieved successfully.');
     }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getRandomRecipes(): JsonResponse
+    {
+        $recipes = $this->receipeService->findAll(15, ['ingredients', 'steps'], ['column' => 'id', 'direction' => 'desc']);
+
+        return $this->apiBaseService->sendSuccessResponse($recipes, 'Recipes retrieved successfully.');
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function getRecipe($id): JsonResponse
+    {
+        $recipe = $this->receipeService->findOne($id, ['ingredients', 'steps']);
+
+        return $this->apiBaseService->sendSuccessResponse($recipe, 'Recipe retrieved successfully.');
+    }
 }
