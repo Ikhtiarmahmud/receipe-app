@@ -49,11 +49,13 @@ class PushNotificationService
             $push->setMessage([
                 'notification' => [
                     'title' => $data['title'],
-                    'body' =>  $data['body'],
+                    'body' =>  $data['sub_title'],
                     'sound' => 'default'
                 ],
                 "data" => [
+                    "type" => $data["type"] ?? "",
                     "image" => $data["image"] ?? "",
+                    "column_id" => $data["column_id"] ?? "",
                 ]
             ])
                 ->setApiKey(env('FIREBASE_SERVER_KEY'));

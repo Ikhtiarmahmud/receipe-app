@@ -17,9 +17,9 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('sub_title');
-            $table->string('image');
-            $table->string('type');
-            $table->integer('column_id');
+            $table->string('image')->nullable();
+            $table->string('type')->nullable();
+            $table->integer('column_id')->nullable();
             $table->timestamps();
         });
     }

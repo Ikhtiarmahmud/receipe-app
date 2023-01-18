@@ -45,19 +45,19 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::label('type', 'Type', ['class' => 'control-label required-field']) }}
-                                    {{ Form::select('type', ['receipe' => 'Receipe', 'Article' => 'Article'], $page == 'edit' ? $notification->type : '', ['class' => 'form-control']) }}
+                                    {{ Form::label('type', 'Type', ['class' => 'control-label']) }}
+                                    {{ Form::select('type', ['' => 'Select One', 'receipe' => 'Receipe', 'Article' => 'Article'], $page == 'edit' ? $notification->type : '', ['class' => 'form-control']) }}
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::label('content', 'Content', ['class' => 'control-label required-field']) }}
-                                    {{ Form::select('column_id', ['1' => "Demo"], $page == 'edit' ? $notification->column_id : '', ['class' => 'form-control']) }}
+                                    {{ Form::label('content', 'Content', ['class' => 'control-label']) }}
+                                    {{ Form::select('column_id', ['' => "Select One"], $page == 'edit' ? $notification->column_id : '', ['class' => 'form-control']) }}
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::label('image', 'Upload Image', ['class' => 'control-label required-field']) }}
+                                    {{ Form::label('image', 'Upload Image', ['class' => 'control-label']) }}
                                     {{ Form::file('image',
                                             ['class' => 'form-control'])
                                     }}

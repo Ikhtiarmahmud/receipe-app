@@ -17,9 +17,14 @@ class NotificationService
      */
     private $notificationRepository;
 
-    public function __construct(NotificationRepository $notificationRepository)
-    {
+    private $pushNotificationService;
+
+    public function __construct(
+        NotificationRepository $notificationRepository,
+        PushNotificationService $pushNotificationService
+    ) {
         $this->notificationRepository = $notificationRepository;
+        $this->pushNotificationService = $pushNotificationService;
         $this->setActionRepository($this->notificationRepository);
     }
 
@@ -30,7 +35,9 @@ class NotificationService
             $data['image'] = $filename;
         }
 
-        $this->save($data);
+        $result = $this->save($data);
+
+        $this->pushNotificationService->sendPushNotification("all", $result);
     }
 
     public function updateArticleInfo(array $data, int $id)
