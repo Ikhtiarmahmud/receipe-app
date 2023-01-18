@@ -29,4 +29,9 @@ class Receipe extends Model
     {
         return $this->hasMany(ReceipeStep::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

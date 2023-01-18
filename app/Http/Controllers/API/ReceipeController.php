@@ -33,7 +33,7 @@ class ReceipeController extends Controller
      */
     public function getRecipesByCategory($categoryId): JsonResponse
     {
-        $recipes = $this->receipeService->findBy(['category_id' => $categoryId], ['ingredients', 'steps'], ['column' => 'id', 'direction' => 'desc']);
+        $recipes = $this->receipeService->findBy(['category_id' => $categoryId], ['ingredients', 'steps', 'category'], ['column' => 'id', 'direction' => 'desc']);
 
         return $this->apiBaseService->sendSuccessResponse($recipes, 'Recipes retrieved successfully.');
     }
@@ -43,7 +43,7 @@ class ReceipeController extends Controller
      */
     public function getRandomRecipes(): JsonResponse
     {
-        $recipes = $this->receipeService->findAll(15, ['ingredients', 'steps'], ['column' => 'id', 'direction' => 'desc']);
+        $recipes = $this->receipeService->findAll(15, ['ingredients', 'steps', 'category'], ['column' => 'id', 'direction' => 'desc']);
 
         return $this->apiBaseService->sendSuccessResponse($recipes, 'Recipes retrieved successfully.');
     }
@@ -54,7 +54,7 @@ class ReceipeController extends Controller
      */
     public function getRecipe($id): JsonResponse
     {
-        $recipe = $this->receipeService->findOne($id, ['ingredients', 'steps']);
+        $recipe = $this->receipeService->findOne($id, ['ingredients', 'steps', 'category']);
 
         return $this->apiBaseService->sendSuccessResponse($recipe, 'Recipe retrieved successfully.');
     }
