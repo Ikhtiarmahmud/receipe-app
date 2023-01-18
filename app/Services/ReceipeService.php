@@ -30,14 +30,18 @@ class ReceipeService
      */
     private $receipeStepService;
 
+    private $pushNotificationService;
+
     public function __construct(
         ReceipeRepository $receipeRepository,
         ReceipeIngridientService $receipeIngridientService,
-        ReceipeStepService $receipeStepService
+        ReceipeStepService $receipeStepService,
+        PushNotificationService $pushNotificationService
     ){
         $this->receipeRepository = $receipeRepository;
         $this->receipeIngridientService = $receipeIngridientService;
         $this->receipeStepService = $receipeStepService;
+        $this->pushNotificationService = $pushNotificationService;
         $this->setActionRepository($receipeRepository);
     }
 
@@ -55,6 +59,7 @@ class ReceipeService
         $this->receipeIngridientService->saveReceipeIngridients($data['group-a'], $receipe->id);
         $this->receipeStepService->saveReceipeStep($data['group-b'], $receipe->id);
 
+        $this->pushNotificationService->sendPushNotification("recipe", $receipe);
         });
     }
 

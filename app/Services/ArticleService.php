@@ -17,20 +17,27 @@ class ArticleService
      */
     private $articleRepository;
 
-    public function __construct(ArticleRepository $articleRepository)
-    {
+    private $pushNotificationService;
+
+    public function __construct(
+        ArticleRepository $articleRepository,
+        PushNotificationService $pushNotificationService
+    ) {
         $this->articleRepository = $articleRepository;
+        $this->pushNotificationService = $pushNotificationService;
         $this->setActionRepository($this->articleRepository);
     }
 
-    public function saveArticleInfo(array $data)
+    public function saveArticleInfo(array $data): void
     {
         if(!empty($data['image'])) {
             $filename = FileUpload::saveImage($data);
             $data['image'] = $filename;
         }
 
-        $this->save($data);
+        $result = $this->save($data);
+
+        $this->pushNotificationService->sendPushNotification("article", $result);
     }
 
     public function updateArticleInfo(array $data, int $id)
