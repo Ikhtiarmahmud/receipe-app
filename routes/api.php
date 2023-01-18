@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\ArticleController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ReceipeController;
+use App\Http\Controllers\API\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,5 @@ Route::get('/recipes', [ReceipeController::class, 'getRandomRecipes']);
 Route::get('/recipe/{id}', [ReceipeController::class, 'getRecipe']);
 Route::get('/articles', [ArticleController::class, 'getArticles']);
 Route::get('/article/{id}', [ArticleController::class, 'getSingleArticle']);
+Route::get('/search/{string}', [SearchController::class, 'search']);
+Route::get('search-by-category/{categoryId}/{string?}', [SearchController::class, 'searchByCategory']);
