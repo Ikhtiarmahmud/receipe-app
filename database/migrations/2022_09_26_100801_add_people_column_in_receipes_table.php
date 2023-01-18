@@ -14,7 +14,9 @@ class AddPeopleColumnInReceipesTable extends Migration
     public function up()
     {
         Schema::table('receipes', function (Blueprint $table) {
-            $table->integer('people')->nullable();
+            if (!Schema::hasColumn('receipes', 'people')) {
+                $table->integer('people')->nullable();
+            }
         });
     }
 
